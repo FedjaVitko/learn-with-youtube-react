@@ -11,7 +11,7 @@ const Item = styled.div`
   border-top: none;
   line-height: 1em;
   color: rgba(0,0,0,.87);
-  font-size: 1rem;
+  font-size: 2rem;
   text-transform: none;
   font-weight: 400;
   box-shadow: none;
@@ -26,6 +26,9 @@ const Item = styled.div`
   ${props => props.isSelected && css`
     color: rgba(0,0,0,.95);
     font-weight: 700;
+  `}
+  ${props => props.isSelected && props.isActive && css`
+    color: white;
   `}
 `;
 

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const Section = styled.section`
     background: #993133;
-    height: calc(100vh - 20em); 
-    padding-top: 20em;
+    height: calc(100vh - 30vh); 
+    padding-top: 30vh;
 `;
 
 export default Section;

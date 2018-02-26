@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SearchSection } from './containers';
+import { SearchSection, CoursesSection } from './containers';
 
 class App extends Component {
 
@@ -12,6 +12,7 @@ class App extends Component {
           onChange={this.onChange}
           onSearch={this.onSearch} 
         />
+        <CoursesSection />
       </div>
     );
   }

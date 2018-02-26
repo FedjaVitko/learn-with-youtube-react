@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Input = styled.input`
-    width: 500px;
+    width: 502px;
     padding: 0.4em;
     font-size: 40px;
     word-wrap: break-word;
