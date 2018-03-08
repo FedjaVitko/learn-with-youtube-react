@@ -28,7 +28,7 @@ export const items = (state = {}, action) => {
             return reduce(
                 action.courses,
                 (acc, course) => {
-                    const { ID: courseId, global_ID: globalId } = course;
+                    const { id: courseId, id: globalId } = course;
                     if (acc[globalId]) {
                         return acc;
                     }

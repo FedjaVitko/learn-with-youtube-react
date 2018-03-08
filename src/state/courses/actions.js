@@ -37,7 +37,7 @@ export function requestCourses(query) {
             query,
         });
 
-        return fetch(`/api/courses/${query}`)
+        return fetch(`/api/courses`)
             .then(res => res.json())
             .then(courses => {
                 dispatch(receiveCourses(courses));
