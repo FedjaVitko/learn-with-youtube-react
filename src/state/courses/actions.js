@@ -27,7 +27,7 @@ export function receiveCourses(courses) {
 /**
  * Triggers a network request to fetch courses for the specified query
  * 
- * @param  {String} query Post query
+ * @param  {String}  query Post query
  * @return {Function}     Action Thunk
  */
 export function requestCourses(query) {
@@ -37,7 +37,7 @@ export function requestCourses(query) {
             query,
         });
 
-        return fetch(`/api/courses`)
+        return fetch(`/api/courses?searchTerm=${query}`)
             .then(res => res.json())
             .then(courses => {
                 dispatch(receiveCourses(courses));

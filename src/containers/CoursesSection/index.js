@@ -1,11 +1,24 @@
+/**
+ * External dependencies
+ */
 import React from 'react';
+import { connect } from 'react-redux';
 
-import { Container } from './components';
+/**
+ * Internal dependencies
+ */
+import { Container, CourseItem } from './components';
 
-const CoursesSection = () => (
-    <Container>
-        <h1>Courses Section</h1>
-    </Container>
+const CoursesSection = ({ courses }) => (
+  <Container>
+    {courses.map((course) => {
+      return (
+        <CourseItem details={course} />
+      )
+    })}
+  </Container>
 )
 
-export default CoursesSection;
+export default connect((state) => ({
+  courses: state.courses.items
+}))(CoursesSection);

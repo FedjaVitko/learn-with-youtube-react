@@ -12,45 +12,49 @@ import { isRequestingCoursesForQuery } from 'state/courses/selectors';
 import { requestCourses } from 'state/courses/actions';
 
 class QueryCourses extends Component {
-    componentWillMount() {
-        this.request(this.props);
+  componentWillMount() {
+    this.request(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.query === nextProps.query
+    ) {
+      return;
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (
-            this.props.query === nextProps.query
-        ) {
-            return;
-        }
+    this.request(nextProps);
+  }
 
-        this.request(nextProps);
-    }
+  request(props) {
+    if (props.query === null) {
+      props.requestCourses('JavaScript')
+      return;
+    } 
 
-    request(props) {
-        if (!props.requestingCourses) {
-            console.log('props.query', props.query);
-            props.requestCourses(props.query);
-        }
+    if (!props.requestingCourses) {
+      props.requestCourses(props.query);
     }
+  }
 
-    render() {
-        return null;
-    }
+  render() {
+    return null;
+  }
 }
 
 export default connect(
-    (state, ownProps) => {
-        const { query } = ownProps;
-        return {
-            requestingCourses: isRequestingCoursesForQuery(state, query),
-        };
-    },
-    dispatch => {
-      return bindActionCreators(
-        {
-          requestCourses
-        },
-        dispatch
-      )
-    }
+  (state, ownProps) => {
+    const { query } = ownProps;
+    return {
+      requestingCourses: isRequestingCoursesForQuery(state, query),
+    };
+  },
+  dispatch => {
+    return bindActionCreators(
+      {
+        requestCourses
+      },
+      dispatch
+    )
+  }
 )(QueryCourses);

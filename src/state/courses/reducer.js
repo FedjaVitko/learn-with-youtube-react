@@ -2,49 +2,49 @@
  * External dependencies
  */
 import {
-    reduce,
+  reduce,
 } from 'lodash';
 import { combineReducers } from 'redux';
 /**
  * Internal dependencies
  */
 import {
-    COURSES_RECEIVE,
-    COURSES_REQUEST,
-    COURSES_REQUEST_FAILURE,
-    COURSES_REQUEST_SUCCESS
+  COURSES_RECEIVE,
+  COURSES_REQUEST,
+  COURSES_REQUEST_FAILURE,
+  COURSES_REQUEST_SUCCESS
 } from '../action-types';
 
-/**
- * Tracks all known course objects, indexed by course global ID
- * 
- * @param {Object} state  Current state
- * @param {Object} action Action payload
- * @param {Object}        Updated state
- */
-export const items = (state = {}, action) => {
-    switch (action.type) {
-        case COURSES_RECEIVE:
-            return reduce(
-                action.courses,
-                (acc, course) => {
-                    const { id: courseId, id: globalId } = course;
-                    if (acc[globalId]) {
-                        return acc;
-                    }
+// /**
+//  * Tracks all known course objects, indexed by course global ID
+//  * 
+//  * @param {Object} state  Current state
+//  * @param {Object} action Action payload
+//  * @param {Object}        Updated state
+//  */
+// export const items = (state = {}, action) => {
+//     switch (action.type) {
+//         case COURSES_RECEIVE:
+//             return reduce(
+//                 action.courses,
+//                 (acc, course) => {
+//                     const { id: courseId, id: globalId } = course;
+//                     if (acc[globalId]) {
+//                         return acc;
+//                     }
 
-                    if (acc === state) {
-                        acc = { ...acc };
-                    }                 
-                    
-                    acc[globalId] = courseId;
-                    return acc;
-                },
-                state
-            );
-    }
-    return state;
-}
+//                     if (acc === state) {
+//                         acc = { ...acc };
+//                     }                 
+
+//                     acc[globalId] = courseId;
+//                     return acc;
+//                 },
+//                 state
+//             );
+//     }
+//     return state;
+// }
 
 
 // const initState = {
@@ -74,6 +74,22 @@ export const items = (state = {}, action) => {
 // }
 
 /**
+ * Tracks all known course objects
+ * 
+ * @param  {Object} state  Current state
+ * @param  {Object} action Action payload
+ * @return {Object}        Updated state
+ */
+export const items = (state = [], action) => {
+  switch (action.type) {
+    case COURSES_RECEIVE:
+      return action.courses
+  }
+
+  return state;
+}
+
+/**
  * Returns the updated post query requesting state after an action has been
  * dispatched. The state reflects a mapping of serialized query to whether a
  * network request is in-progress for that query.
@@ -82,20 +98,20 @@ export const items = (state = {}, action) => {
  * @param  {Object} action Action payload
  * @return {Object}        Updated state
  */
-export function queryRequests( state = {}, action ) {
-	switch ( action.type ) {
-		case COURSES_REQUEST:
-		case COURSES_REQUEST_SUCCESS:
-		case COURSES_REQUEST_FAILURE:
-			return Object.assign({}, state, {
-				[action.query]: COURSES_REQUEST === action.type,
-			});
-	}
+export function queryRequests(state = {}, action) {
+  switch (action.type) {
+    case COURSES_REQUEST:
+    case COURSES_REQUEST_SUCCESS:
+    case COURSES_REQUEST_FAILURE:
+      return Object.assign({}, state, {
+        [action.query]: COURSES_REQUEST === action.type,
+      });
+  }
 
-	return state;
+  return state;
 }
 
 export default combineReducers({
-    items,
-    queryRequests
+  items,
+  queryRequests
 });
