@@ -5,9 +5,9 @@ const Container = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0.2em;
-    min-height: 100vh;
-    background: green;
+    padding: 3em;
+    min-height: 250px;
+    background: white;
 `;
 
 export default Container;

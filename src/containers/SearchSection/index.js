@@ -10,7 +10,7 @@ import smoothScroll from 'smoothscroll';
 /**
  * Internal dependencies
  */
-import { TextLabel, Input, InputButton, Section, Menu, Item, Container } from './components';
+import { TextLabel, Input, InputButton, Section, Menu, Item, Container } from './Styled';
 import QueryCourses from 'components/data/query-courses';
 
 

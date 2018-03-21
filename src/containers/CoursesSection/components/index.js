@@ -1,2 +1,7 @@
-export { default as Container } from './Container';
-export { default as CourseItem } from './CourseItem/index.js';
+import Container from './Container';
+import CourseItem from './CourseItem';
+
+export {
+    Container,
+    CourseItem
+}
