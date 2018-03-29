@@ -1,51 +1,51 @@
 /**
  * External dependencies
  */
-import React from 'react'
+import React from 'react';
 
 /**
  * Internal dependencies
  */
-import { 
-    CardContainer, 
-    CreationDate,
-    CourseTitle,
-    CourseLanguage,
-    CourseLessonsCount,
-    CourseImageContainer,
-    CourseDifficulty
+import {
+  CardContainer,
+  CreationDate,
+  CourseTitle,
+  CourseAuthor,
+  CourseLanguage,
+  CourseLessonsCount,
+  CourseImageContainer,
+  CourseDifficulty,
+  CourseImgDescriptionContainer,
+  CourseImage,
+  CourseDescription
 } from './Styled';
+import { difficultyConst } from 'const';
 
-const CourseItem = ({
-    details
-}) => console.log(details) || (
-    <CardContainer>
-        {/* <div>
-        <h2>{details.title}</h2>
-        </div>
-        <img src={details.thumbnail} /> */}
-        <CreationDate 
-            title="Course creation date"
-            datetime="21-03-2018"
-        >
-            21.03.2018
-        </CreationDate>
-        <CourseTitle>
-            {details.title}
-        </CourseTitle>
-        <CourseLanguage>
-            {details.lang}
-        </CourseLanguage>
-        <CourseLessonsCount>
-            {`${details.lessons_count} lessons`}
-        </CourseLessonsCount>
-        <CourseDifficulty>
-            advanced
-        </CourseDifficulty>
-        <CourseImageContainer>
-            <img src={details.thumbnail} />
-        </CourseImageContainer>
+const CourseItem = ({ details, onClick }) =>
+  console.log(details) || (
+    <CardContainer onClick={onClick}>
+      <CreationDate title="Course creation date" datetime="21-03-2018">
+        21.03.2018
+      </CreationDate>
+      <CourseTitle>{details.title}</CourseTitle>
+      <CourseAuthor href="#">{details.channel_title}</CourseAuthor>
+      <CourseLanguage>{details.lang}</CourseLanguage>
+      <CourseLessonsCount>
+        {`${details.lessons_count} lessons`}
+      </CourseLessonsCount>
+      <CourseDifficulty difficulty={details.difficulty}>
+        {difficultyConst[details.difficulty].text}
+      </CourseDifficulty>
+      <CourseImgDescriptionContainer>
+        <CourseImage src={details.thumbnail} />
+        <CourseDescription>
+          This course will take you on the wonderful journey through the
+          JavaScript land. It will take you to places you have never been
+          before. Regardless of how experienced you are in the field of Web
+          Development.
+        </CourseDescription>
+      </CourseImgDescriptionContainer>
     </CardContainer>
-)
+  );
 
 export default CourseItem;

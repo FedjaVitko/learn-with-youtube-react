@@ -3,22 +3,34 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 /**
  * Internal dependencies
  */
 import { Container, CourseItem } from './components';
 
-const CoursesSection = ({ courses }) => (
+const CoursesSection = ({ courses, history }) => (
   <Container>
-    {courses.map((course) => {
+    {courses.map(course => {
       return (
-        <CourseItem details={course} />
-      )
+        <CourseItem
+          key={course.playlist_id}
+          details={course}
+          onClick={() =>
+            history.push(
+              `/courses/${course.title
+                .split(' ')
+                .join('-')
+                .toLowerCase()}`
+            )
+          }
+        />
+      );
     })}
   </Container>
-)
+);
 
-export default connect((state) => ({
+export default connect(state => ({
   courses: state.courses.items
-}))(CoursesSection);
+}))(withRouter(CoursesSection));
