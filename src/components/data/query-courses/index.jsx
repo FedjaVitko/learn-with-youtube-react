@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -17,9 +18,7 @@ class QueryCourses extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      this.props.query === nextProps.query
-    ) {
+    if (this.props.query === nextProps.query) {
       return;
     }
 
@@ -28,9 +27,9 @@ class QueryCourses extends Component {
 
   request(props) {
     if (props.query === null) {
-      props.requestCourses('JavaScript')
+      props.requestCourses('JavaScript');
       return;
-    } 
+    }
 
     if (!props.requestingCourses) {
       props.requestCourses(props.query);
@@ -42,11 +41,15 @@ class QueryCourses extends Component {
   }
 }
 
+QueryCourses.propTypes = {
+  query: PropTypes.string.isRequired
+};
+
 export default connect(
   (state, ownProps) => {
     const { query } = ownProps;
     return {
-      requestingCourses: isRequestingCoursesForQuery(state, query),
+      requestingCourses: isRequestingCoursesForQuery(state, query)
     };
   },
   dispatch => {
@@ -55,6 +58,6 @@ export default connect(
         requestCourses
       },
       dispatch
-    )
+    );
   }
 )(QueryCourses);

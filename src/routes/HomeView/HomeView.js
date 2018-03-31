@@ -9,13 +9,10 @@ import React from 'react';
 import { SearchSection, CoursesSection } from 'containers';
 
 const HomeView = () => (
-    <div>
-        <SearchSection
-            onChange={this.onChange}
-            onSearch={this.onSearch} 
-        />
-        <CoursesSection />
-    </div>
-)
+  <div>
+    <SearchSection onChange={this.onChange} onSearch={this.onSearch} />
+    <CoursesSection />
+  </div>
+);
 
 export default HomeView;

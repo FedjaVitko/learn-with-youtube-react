@@ -1,8 +1,8 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import HomeView from "./HomeView";
-import CourseView from "./CourseView";
+import HomeView from './HomeView';
+import CourseView from './CourseView';
 
 const Routes = () => {
   return (
