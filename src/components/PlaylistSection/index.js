@@ -8,12 +8,23 @@ import PropTypes from 'prop-types';
  * Internal dependencies
  */
 import { video } from 'const/propTypes';
-import { VideoContainer, IFrame, VideoTitle } from './Styled';
+import { PlaylistContainer, Playlist } from './Styled';
+import { ListItem } from './components';
 
 const PlaylistSection = ({ videos }) => (
-  <VideoContainer>
-    <VideoTitle>Vue 2.0 Tutorial</VideoTitle>
-  </VideoContainer>
+  <PlaylistContainer>
+    <Playlist>
+      {videos.map(video => (
+        <ListItem
+          key={video.id}
+          id={video.id}
+          title={video.title}
+          duration={video.duration}
+          active={true}
+        />
+      ))}
+    </Playlist>
+  </PlaylistContainer>
 );
 
 PlaylistSection.propTypes = {

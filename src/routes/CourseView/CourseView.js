@@ -12,6 +12,8 @@ import { video } from 'const/propTypes';
 import { VideoSection, PlaylistSection } from 'components';
 import { Container } from './Styled';
 
+import videos from './videos';
+
 const CourseView = ({ videoId, videos }) => (
   <Container>
     <VideoSection videoId={videoId} />
@@ -26,5 +28,5 @@ CourseView.propTypes = {
 
 export default connect(state => ({
   videoId: '5LYrN_cAJoA',
-  videos: [{ id: '1', title: 'vue 1.0 Lesson 1' }]
+  videos: videos
 }))(CourseView);

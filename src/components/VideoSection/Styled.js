@@ -7,16 +7,14 @@ import styled from 'styled-components';
  * Internal dependencies
  */
 import { styleConst } from 'const';
+import { Block } from 'components/Styled';
 
 const { COLORS, FONT_SIZES } = styleConst;
 
-const VideoContainer = styled.div`
-  margin: 3rem 0;
-  padding: 3rem;
-  background-color: ${COLORS.BACKGROUND};
-`;
+const VideoContainer = Block.extend``;
 
 const IFrame = styled.iframe`
+  width: 100%;
   margin: 3rem 0;
 `;
 

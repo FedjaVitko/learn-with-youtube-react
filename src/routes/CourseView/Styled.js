@@ -11,10 +11,9 @@ import { styleConst } from 'const';
 const { COLORS } = styleConst;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  max-width: 1200px;
+  margin: 3rem auto;
+  width: 95%;
 `;
 
 export { Container };
