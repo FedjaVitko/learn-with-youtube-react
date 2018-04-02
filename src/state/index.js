@@ -10,11 +10,13 @@ import createHistory from 'history/createBrowserHistory';
  * Internal dependencies
  */
 import courses from './courses/reducer';
+import lessons from './lessons/reducer';
 
 const reducers = {
-    courses,
-    router: routerReducer
-}
+  courses,
+  lessons,
+  router: routerReducer
+};
 
 const history = createHistory();
 
@@ -22,15 +24,12 @@ export const reducer = combineReducers(reducers);
 
 const routeMiddleware = routerMiddleware(history);
 
-const middlewares = [
-    thunkMiddleware,
-    routeMiddleware
-]
+const middlewares = [thunkMiddleware, routeMiddleware];
 
 const enhancers = [
-    applyMiddleware(...middlewares),
-    window.devToolsExtension && window.devToolsExtension(),
-].filter(Boolean)
+  applyMiddleware(...middlewares),
+  window.devToolsExtension && window.devToolsExtension()
+].filter(Boolean);
 
 const initialState = {};
 

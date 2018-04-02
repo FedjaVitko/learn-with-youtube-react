@@ -1,9 +1,7 @@
 /**
  * External dependencies
  */
-import {
-  reduce,
-} from 'lodash';
+import { reduce } from 'lodash';
 import { combineReducers } from 'redux';
 /**
  * Internal dependencies
@@ -17,7 +15,7 @@ import {
 
 // /**
 //  * Tracks all known course objects, indexed by course global ID
-//  * 
+//  *
 //  * @param {Object} state  Current state
 //  * @param {Object} action Action payload
 //  * @param {Object}        Updated state
@@ -35,7 +33,7 @@ import {
 
 //                     if (acc === state) {
 //                         acc = { ...acc };
-//                     }                 
+//                     }
 
 //                     acc[globalId] = courseId;
 //                     return acc;
@@ -45,7 +43,6 @@ import {
 //     }
 //     return state;
 // }
-
 
 // const initState = {
 //     courses: [],
@@ -75,19 +72,19 @@ import {
 
 /**
  * Tracks all known course objects
- * 
+ *
  * @param  {Object} state  Current state
  * @param  {Object} action Action payload
  * @return {Object}        Updated state
  */
 export const items = (state = [], action) => {
   switch (action.type) {
-    case COURSES_RECEIVE:
-      return action.courses
+  case COURSES_RECEIVE:
+    return action.courses;
   }
 
   return state;
-}
+};
 
 /**
  * Returns the updated post query requesting state after an action has been
@@ -100,12 +97,12 @@ export const items = (state = [], action) => {
  */
 export function queryRequests(state = {}, action) {
   switch (action.type) {
-    case COURSES_REQUEST:
-    case COURSES_REQUEST_SUCCESS:
-    case COURSES_REQUEST_FAILURE:
-      return Object.assign({}, state, {
-        [action.query]: COURSES_REQUEST === action.type,
-      });
+  case COURSES_REQUEST:
+  case COURSES_REQUEST_SUCCESS:
+  case COURSES_REQUEST_FAILURE:
+    return Object.assign({}, state, {
+      [action.query]: COURSES_REQUEST === action.type
+    });
   }
 
   return state;

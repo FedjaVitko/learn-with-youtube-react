@@ -5,7 +5,8 @@ import {
   LESSONS_RECEIVE,
   LESSONS_REQUEST,
   LESSONS_REQUEST_SUCCESS,
-  LESSONS_REQUEST_FAILURE
+  LESSONS_REQUEST_FAILURE,
+  LESSON_RECEIVE
 } from 'state/action-types';
 
 /**
@@ -28,7 +29,7 @@ export function receiveLessons(lessons) {
  * @param  {String}  url   Course URL
  * @return {Function}      Action Thunk
  */
-export function requestLesson(playlistId) {
+export function requestLessons(playlistId) {
   return dispatch => {
     dispatch({
       type: LESSONS_REQUEST,
@@ -52,5 +53,12 @@ export function requestLesson(playlistId) {
           error
         });
       });
+  };
+}
+
+export function requestLesson(lessonId) {
+  return {
+    type: LESSON_RECEIVE,
+    lessonId
   };
 }

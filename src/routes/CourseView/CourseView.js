@@ -12,12 +12,10 @@ import { video } from 'const/propTypes';
 import { VideoSection, PlaylistSection } from 'components';
 import { Container } from './Styled';
 
-import videos from './videos';
-
 const CourseView = ({ videoId, videos }) => (
   <Container>
     <VideoSection videoId={videoId} />
-    <PlaylistSection videos={videos} />
+    <PlaylistSection videos={videos} videoId={videoId} />
   </Container>
 );
 
@@ -26,7 +24,10 @@ CourseView.propTypes = {
   videos: PropTypes.arrayOf(PropTypes.shape(video))
 };
 
-export default connect(state => ({
-  videoId: '5LYrN_cAJoA',
-  videos: videos
-}))(CourseView);
+export default connect(
+  state =>
+    console.log('state', state.courses.items) || {
+      videoId: state.lessons.item && state.lessons.item.id,
+      videos: state.lessons.items
+    }
+)(CourseView);

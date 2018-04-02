@@ -11,16 +11,17 @@ import { video } from 'const/propTypes';
 import { PlaylistContainer, Playlist } from './Styled';
 import { ListItem } from './components';
 
-const PlaylistSection = ({ videos }) => (
+const PlaylistSection = ({ videos, videoId, onItemClick }) => (
   <PlaylistContainer>
     <Playlist>
       {videos.map(video => (
         <ListItem
           key={video.id}
           id={video.id}
-          title={video.title}
-          duration={video.duration}
-          active={true}
+          title={video.info.title}
+          duration={video.info.duration}
+          active={video.id === videoId}
+          onClick={() => onItemClick(video.id)}
         />
       ))}
     </Playlist>
@@ -28,7 +29,9 @@ const PlaylistSection = ({ videos }) => (
 );
 
 PlaylistSection.propTypes = {
-  videos: PropTypes.arrayOf(PropTypes.shape(video))
+  videos: PropTypes.arrayOf(PropTypes.shape(video)).isRequired,
+  videoId: PropTypes.string.isRequired,
+  onItemClick: PropTypes.func.isRequired
 };
 
 export default PlaylistSection;

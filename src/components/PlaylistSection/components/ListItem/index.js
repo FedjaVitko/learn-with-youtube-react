@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { Item, Name, Duration } from './Styled';
 
 const ListItem = ({ title, duration, active }) => (
-  <Item active>
+  <Item active={active}>
     <Name>{title}</Name>
     <Duration>{duration}</Duration>
   </Item>
